@@ -17,7 +17,7 @@ public class ProductListingPage {
     @FindBy(xpath = "//*[@id=\"search\"]/span[2]/div/h1/div/div[1]/div/div/span[1]")
     WebElement serachResultCount;
 
-    @FindBy(xpath = "//*[@id=\"search\"]/div[1]/div[1]/div/span[1]/div[1]/div[3]/div")
+    @FindBy(xpath = "//*[@data-component-type='s-search-result']")
     WebElement productListing;
 
     public ProductListingPage(WebDriver driver)
@@ -48,10 +48,10 @@ public class ProductListingPage {
 
         for(int i = 3 ; i<=(totalCount+3) ; i++ )
         {
-            String dynamicXpath = "//*[@id=\"search\"]/div[1]/div[1]/div/span[1]/div[1]/div["+i+"]/div";
+
             String productDescription;
             try {
-                productDescription = driver.findElement(By.xpath(dynamicXpath)).getText();
+                productDescription = productListing.getText();
             }
             catch (Exception exception)
             {
